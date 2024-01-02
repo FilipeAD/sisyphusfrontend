@@ -1,0 +1,16 @@
+/* home.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh; /* Set the container to full height of the viewport */
+  text-align: center; /* Center the content within the container */
+}
+
+.intro-text {
+  margin-bottom: 20px;
+}
+
+/* Add any other styles as needed for the rest of your page */
+
