@@ -22,8 +22,8 @@ const Login = () => {
       <div className="login-left">
         <h1>Sisyphus</h1>
         <form onSubmit={handleLogin}>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
+          <label htmlFor="username">Email:</label>
+          <input type="text" id="email" name="email" />
 
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" />
