@@ -68,6 +68,7 @@ const Diet = () => {
     }
   };
 
+
   return (
     <div className="diet-app">
       <Navbar />

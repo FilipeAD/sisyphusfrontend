@@ -10,17 +10,20 @@ import './styles/App.css';
 
 function App() {
   return (
-    <Router>
-      <TransitionWrapper>
-        <Routes>
-          <Route index element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/workoutPlanner" element={<WorkoutPlanner />} />
-          <Route path="/diet" element={<Diet />} />
-        </Routes>
-      </TransitionWrapper>
-    </Router>
+    <div className='App'>
+      <Router>
+        <TransitionWrapper>
+          <Routes>
+            <Route index element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/workoutPlanner" element={<WorkoutPlanner />} />
+            <Route path="/diet" element={<Diet />} />
+          </Routes>
+        </TransitionWrapper>
+      </Router>
+    </div>
+    
   );
 }
 

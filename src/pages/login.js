@@ -34,10 +34,7 @@ const Login = () => {
           Don't have an account? <button onClick={handleRegister}>Register</button>
         </p>
       </div>
-      <div className="login-right">
-        {/* Your image goes here */}
-        <img src="path/to/your/image.jpg" alt="Sisyphus Image" />
-      </div>
+     
     </div>
   );
 }
