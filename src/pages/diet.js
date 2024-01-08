@@ -71,7 +71,6 @@ const Diet = () => {
 
   return (
     <div className="diet-app">
-      <Navbar />
       <div className="diet-container">
         <h1>Calorie Calculator</h1>
         <form className="diet-form">

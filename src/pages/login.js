@@ -1,37 +1,26 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/login.css'; // Import your login component styles
+import React, {useContext} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext'
+import '../styles/login.css'; 
+
 
 const Login = () => {
-  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Perform login logic if needed
-    // Then navigate to the home page
-    navigate('/home');
-  };
-
-  const handleRegister = () => {
-    // Navigate to the register page
-    navigate('/register');
-  };
+  let {loginUser} = useContext(AuthContext)
 
   return (
     <div className="login-container">
       <div className="login-left">
-        <h1>Sisyphus</h1>
-        <form onSubmit={handleLogin}>
-          <label htmlFor="username">Email:</label>
-          <input type="text" id="email" name="email" />
+        <h1>Login</h1>
+        <form onSubmit={loginUser}>
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
-
+          <input type="text" id="email" name="email" placeholder='EMAIL'/>
+          <input type="password" id="password" name="password" placeholder='PASSWORD' />
           <button type="submit">Login</button>
+
         </form>
         <p>
-          Don't have an account? <button onClick={handleRegister}>Register</button>
+          Don't have an account? <Link to='/register'>Register</Link>
         </p>
       </div>
      

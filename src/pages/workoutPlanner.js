@@ -5,7 +5,6 @@ import '../styles/workoutPlanner.css';
 const WorkoutPlanner = () => {
   return (
     <div>
-      <Navbar />
     </div>
   );
 }
