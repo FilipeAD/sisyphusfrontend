@@ -19,23 +19,23 @@ import Navbar from './components/navbar'
 function App() {
   return (
     <div className='App'>
-    <Router>
-        <AuthProvider>
-          <Navbar/>
+      <Router>
+          <AuthProvider>
+            <Navbar/>
 
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/workoutPlanner" element={<WorkoutPlanner />} />
-            <Route path="/diet" element={<Diet />} />
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/workoutPlanner" element={<WorkoutPlanner />} />
+              <Route path="/diet" element={<Diet />} />
 
-            <Route path="/login" element={ <Login /> }/>
-            <Route path="/register" element={<Register />} /> 
-            <Route path="/profilepage" element={<Profile />} />
-          </Routes>
+              <Route path="/login" element={ <Login /> }/>
+              <Route path="/register" element={<Register />} /> 
+              <Route path="/profilepage" element={<Profile />} />
+            </Routes>
 
 
-        </AuthProvider>
-    </Router>
+          </AuthProvider>
+      </Router>
   </div>
 
   );

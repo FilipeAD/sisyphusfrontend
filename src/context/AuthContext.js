@@ -10,8 +10,10 @@ export const AuthProvider = ({children}) => {
 
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null)
+    let [loading, setLoading] = useState(true)
 
     const history = useNavigate()
+
 
     let loginUser = async (e) => {
         e.preventDefault()
@@ -23,6 +25,7 @@ export const AuthProvider = ({children}) => {
             body:JSON.stringify({'email': e.target.email.value, 'password': e.target.password.value})
     })
 
+   
     let data = await response.json()
     if(response.status == 200){
         setAuthTokens(data)
@@ -32,7 +35,7 @@ export const AuthProvider = ({children}) => {
     }else{
         alert('Error on api login request')
     }
-    }
+    }  
 
     let logoutUser = () => {
         setAuthTokens(null)
@@ -41,12 +44,62 @@ export const AuthProvider = ({children}) => {
         history('/login')
     }
 
+      
+    let updateToken = async (e) => {
+        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({'refresh': authTokens.refresh})
+    })
+
+    let data = await response.json()
+    if(response.status == 200){
+        setAuthTokens(data)
+        setUser(jwtDecode(data.access))
+        localStorage.setItem('authTokens', JSON.stringify(data))
+    }else{
+        logoutUser()
+    }
+    } 
+
+    let createUser = async (e) => {
+        e.preventDefault()
+        let response = await fetch('http://127.0.0.1:8000/api/user/', {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({'username': e.target.username.value ,'email': e.target.email.value, 'password': e.target.password.value})
+    })
+
+   
+    if(response.status == 201){
+        history('/')
+    }else{
+        alert('Error on api login request')
+    }
+    }  
+
 
     let contextData = {
         user: user,
         loginUser:loginUser,
-        logoutUser:logoutUser
+        logoutUser:logoutUser,
+        createUser:createUser
     }
+
+    useEffect(()=>{
+        
+        let interval = setInterval(()=>{
+            if (authTokens){
+                updateToken()
+            }
+        }, 2000)
+        return ()=> clearInterval(interval)
+
+    }, [authTokens, loading])
 
 
     return(

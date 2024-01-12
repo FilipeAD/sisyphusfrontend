@@ -1,33 +1,34 @@
-// components/Register.js
-import React from 'react';
-import '../styles/register.css'; // Import your register component styles
+import React, {useContext} from 'react';
+import '../styles/login.css'; 
+import sisyphusIcon from '../resources/sisyphus.png';
+import AuthContext from '../context/AuthContext'
 
 const Register = () => {
+
+  let {createUser} = useContext(AuthContext)
+
+
   return (
-    <div className="register-container">
-      <div className="register-left">
-        <h1>Create an Account</h1>
-        <form className="register-form">
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
+    <div className="basic-container">
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
+      <div className="login-container">
 
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" />
+        <form onSubmit={createUser}>
+          <h2>Create an Account</h2>
+          <input type="text" id="username" name="username" placeholder='USERNAME' tabIndex={0} required/>
 
-          <button type="submit">Register</button>
+          <input type="text" id="email" name="email" placeholder='EMAIL' tabIndex={0} required/>
+
+          <input type="password" id="password" name="password" placeholder='PASSWORD' tabIndex={0} required/>
+
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder='CONFIRM PASSWORD' tabIndex={0} required/>
+
+          <img src={sisyphusIcon} alt="Logo" />
+
+          <button type="submit"  tabIndex={0} >REGISTER</button>
         </form>
       </div>
-      <div className="register-right">
-        {/* Your image goes here */}
-        <img
-          className="register-image"
-          src="path/to/your/image.jpg"
-          alt="Sisyphus Image"
-        />
-      </div>
+     
     </div>
   );
 }

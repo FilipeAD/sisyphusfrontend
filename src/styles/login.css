@@ -1,43 +1,91 @@
-.login-container {
+.basic-container {
   display: flex;
   height: 100vh;
 }
 
-.login-left {
+.login-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  flex-wrap: wrap;
+  color: rgb(7, 7, 7);
 }
 
 
-.login-left h1 {
-  color: white;
+
+.login-container h2 {
+  color: rgb(7, 7, 7);
 }
 
-.login-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white; /* or any background color you prefer */
-}
-
-.login-left form {
+.login-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color:  rgb(237, 132, 45);
+  padding: 45px;
+  border-radius: 10px;
+  
 }
 
-.login-left input {
+.login-container input {
   padding: 8px;
-  margin-top: 5px;
+  background-color: rgb(237, 132, 45);
+
+  color: rgba(7, 7, 7, 0.857);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+}
+
+.login-container input::placeholder {
+  color: rgb(7, 7, 7);
+  opacity: 0.5;
+
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 .button-container {
   display: flex;
   gap: 8px;
 }
+
+.login-container button{
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+ 
+  
+  border: none;
+  cursor: pointer;
+
+  background-color:rgb(237, 132, 45);
+  color: rgb(7, 7, 7);
+
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+
+.login-container button:hover{
+   color:whitesmoke;
+   background-color: #924a1482;
+}
+
+
+
+.login-container img{
+  margin-top: 10px;
+  max-width: 30vh;
+}
+
+
+
 
