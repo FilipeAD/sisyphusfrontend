@@ -14,14 +14,14 @@ import Diet from './pages/diet';
 import Profile from './pages/profile'
 
 import './styles/App.css';
-import Navbar from './components/navbar'
+import Header from './components/navbar';
 
 function App() {
   return (
     <div className='App'>
       <Router>
           <AuthProvider>
-            <Navbar/>
+            <Header/>
 
             <Routes>
               <Route index element={<Home />} />
