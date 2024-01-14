@@ -16,7 +16,6 @@ const Navbar = () => {
   const [checkClass, setCheck] = useState(true);
 
   let responsiveState = () =>{
-
     if (checkClass == true){
       setCheck(false);
     }else{
@@ -34,11 +33,12 @@ const Navbar = () => {
           <button className="dropbtn">Exercises</button>
           <div className="dropdown-content">
             <NavLink to="/workoutPlanner" className="nav-link">
-              Personalized Plan
-            </NavLink>
-            <NavLink to="/workoutPlanner" className="nav-link">
               Generic Plan
             </NavLink>
+            <NavLink to="/workoutPlanner" className="nav-link">
+              Personalized Plan
+            </NavLink>
+            
           </div>
         </div>
 
