@@ -1,0 +1,64 @@
+.workout-planner-container {
+  display: flex;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 40%;
+}
+
+.workout-planner-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: black; 
+}
+
+.workout-planner-container select {
+  padding: 8px;
+  background-color: rgb(237, 132, 45);
+
+  color: rgba(7, 7, 7);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.workout-planner-container button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+ 
+  
+  border: none;
+  cursor: pointer;
+
+  background-color:rgb(237, 132, 45);
+  color: rgb(7, 7, 7);
+
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.workout-planner-container button:hover{
+   color:whitesmoke;
+   background-color: #924a1482;
+}
+
+.workout-planner-container select:hover{
+   color:whitesmoke;
+   background-color: #924a1482;
+}
+
+.workout-planner-container form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:  rgb(237, 132, 45);
+  padding: 40px;
+  border-radius: 10px;  
+}
+
+.workout-planner-container h2 {
+  color: black;
+}
