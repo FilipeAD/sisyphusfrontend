@@ -13,18 +13,15 @@ const Diet = () => {
         <form className="diet-form">
 
           <label>
-            Height (cm):
-            <input type="number" className="diet-input"/>
+            <input type="number" className="diet-input" placeholder='HEIGHT (cm)'/>
           </label>
 
           <label>
-            Weight (kg):
-            <input type="number" className="diet-input"/>
+            <input type="number" className="diet-input" placeholder='WEIGHT (kg)'/>
           </label>
 
           <label>
-            Age:
-            <input type="number" className="diet-input" />
+            <input type="number" className="diet-input" placeholder='AGE'/>
           </label>
 
           <label>

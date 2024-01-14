@@ -41,8 +41,8 @@
 }
 
 .workout-planner-container button:hover{
-   color:whitesmoke;
-   background-color: #924a1482;
+  color:whitesmoke;
+  background-color: #924a1482;
 }
 
 .workout-planner-container select:hover{
@@ -61,4 +61,8 @@
 
 .workout-planner-container h2 {
   color: black;
+}
+
+.workout-planner-container option {
+  text-align: center;
 }
