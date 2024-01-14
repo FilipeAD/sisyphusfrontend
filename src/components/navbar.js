@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
 import { RiProfileLine } from "react-icons/ri";
 import { IconContext } from 'react-icons';
+import sisyphusIcon from '../resources/sisyphus.png';
 
 /* Context For User  */
 import AuthContext from '../context/AuthContext';
@@ -25,6 +26,7 @@ const Navbar = () => {
 
   return (
     <div className = {checkClass ? ( "topnav" ): ( 'topnav responsive') } id="myTopnav">
+      <Link to="/"> <img src={sisyphusIcon} alt="Logo" /> </Link>
       <Link to="/" className="home"> Sisyphus </Link>
 
       <div className='align-right'>
