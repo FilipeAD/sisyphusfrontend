@@ -5,10 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { RiProfileLine } from "react-icons/ri";
 import { IconContext } from 'react-icons';
 import sisyphusIcon from '../resources/sisyphus.png';
-
-/* Context For User  */
 import AuthContext from '../context/AuthContext';
-
 import '../styles/navbar.css';
 
 
@@ -59,15 +56,9 @@ const Navbar = () => {
             </IconContext.Provider>
           </NavLink>
         )}
-
-          
         <IconContext.Provider value={{ className:"icon" }} >
           <FaBars  onClick={responsiveState}/>
         </IconContext.Provider>
-         
-       
-    
-
       </div>
     </div>
   );

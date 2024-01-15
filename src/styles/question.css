@@ -1,0 +1,86 @@
+/* Question.css */
+.question-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: rgb(7, 7, 7);
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-button {
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column; /* Updated to make the submit button below the input */
+  align-items: center;
+}
+
+.input-field {
+  width: 100%; /* Updated to take full width */
+  margin-bottom: 10px; /* Added margin for separation */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid black;
+  background-color: rgb(237, 132, 45);
+}
+
+.submit-button {
+  width: 100%; /* Updated to take full width */
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgb(237, 132, 45);
+  border: none;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  color: whitesmoke;
+  background-color: #924a1482;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .question-container {
+    margin: 10px;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .options-container {
+    gap: 8px;
+  }
+
+  .option-button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .input-field {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+
