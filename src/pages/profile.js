@@ -17,8 +17,6 @@ const Profile = () => {
     else{
       setInputState(!inputState)
     }
-    
-   
   }
 
   useEffect(()=>{
@@ -34,7 +32,6 @@ const Profile = () => {
           
           <form className='menu-Edit' onSubmit={() => (inputState ? updateUser(userInfo.id) : readOnly())}>
               <h2>Welcome {userInfo.username}</h2>
-                <fieldset disabled={() => (inputState ? "disabled" : '')}>
 
                   <span>FIRST AND LAST NAME</span>
                   <div className='small-container'>
@@ -63,7 +60,7 @@ const Profile = () => {
 
                     <button onClick={logoutUser} type="submit">LOGOUT</button>
                   </div>
-            </fieldset>
+        
           </form>
         </div>
     </div>

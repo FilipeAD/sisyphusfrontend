@@ -8,7 +8,7 @@ import sisyphusIcon from '../resources/sisyphus.png';
 
 const Login = () => {
 
-  let {loginUser,} = useContext(AuthContext)
+  let {loginUser} = useContext(AuthContext)
 
   return (
     <div className="basic-container">
