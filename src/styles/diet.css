@@ -1,49 +1,30 @@
-/* Diet.css */
 
-.diet-app {
-  display: flex;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 40%;
-}
-
-.diet-app label, h1{
-  color: black;
-}
-
+/* diet.css */
 .diet-container {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 0 auto;
+  margin-top: 20px;
   padding: 20px;
-  border-radius: 8px;
   background-color: rgb(237, 132, 45);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.diet-form {
-  display: grid;
+.answer-container { 
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  color: rgb(7,7,7);
+}
+
+.answer-container li {
+  margin-top: 20px;
   gap: 10px;
+  list-style-type: none;
 }
 
-.diet-input {
-  padding: 8px;
-  background-color: rgb(237, 132, 45);
-
-  color: rgba(7, 7, 7);
+.answer-container button {
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  width: 100%;
-  cursor: pointer; 
-}
-
-.diet-app select:hover {
-  color:whitesmoke;
-  background-color: #924a1482;
-}
-
-.diet-button {
-  ont-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
  
@@ -55,14 +36,23 @@
   color: rgb(7, 7, 7);
 
   text-align: center;
-  margin-top: 10px;
-  width: 100%;
-
+  margin-top: 30px;
 }
 
-.diet-button:hover {
-  color:whitesmoke;
+.answer-container button:hover {
+  color: whitesmoke;
   background-color: #924a1482;
 }
 
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .diet-container {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .answer-container {
+    padding: 10px;
+  }
+}
 
