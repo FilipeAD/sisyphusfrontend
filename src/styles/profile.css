@@ -26,6 +26,18 @@
     
 }
 
+.profile-container form fieldset {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color:  rgb(237, 132, 45);
+    padding: 45px;
+    border-radius: 5px;
+    flex-direction: column; 
+    border:none;
+    
+}
+
 
 .profile-container form h2 {
     position: absolute;
