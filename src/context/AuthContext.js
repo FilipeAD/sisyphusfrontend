@@ -32,6 +32,7 @@ export const AuthProvider = ({children}) => {
         setAuthTokens(data)
         setUser(jwtDecode(data.access))
         localStorage.setItem('authTokens', JSON.stringify(data))
+        
         history('/')
     }else{
         alert('Error on api login request')
@@ -43,7 +44,26 @@ export const AuthProvider = ({children}) => {
         setUser(null)
         localStorage.removeItem('authTokens')
         history('/login')
+
     }
+
+    let createUser = async (e) => {
+        e.preventDefault()
+        let response = await fetch('http://127.0.0.1:8000/api/user/', {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({'username': e.target.username.value ,'email': e.target.email.value, 'password': e.target.password.value})
+    })
+
+   
+    if(response.status == 201){
+        history('/')
+    }else{
+        alert('Error on api login request')
+    }
+    } 
 
       
     let updateToken = async (e) => {
@@ -66,8 +86,8 @@ export const AuthProvider = ({children}) => {
     }
     } 
 
-    let updateINFO = async (id) => {
-        let response = await fetch(`http://127.0.0.1:8000/api/user/${id}`, {
+    let getUinfo = async (id) => {
+        let response = await fetch(`http://127.0.0.1:8000/api/user/${id}/`, {
             method:'GET',
             headers:{
                 'Content-Type': 'application/json',
@@ -75,42 +95,40 @@ export const AuthProvider = ({children}) => {
             }
         })
     
-    
+        
         let data = await response.json()
+        console.log(data)
+        console.log('working')
         if(response.status == 200){
+            
             setUserInfo(data);
         }else{
             console.error(`Failed to update user information. Status: ${response.status}`);
         }
     }
 
-    let createUser = async (e) => {
-        e.preventDefault()
-        let response = await fetch('http://127.0.0.1:8000/api/user/', {
-            method:'POST',
+    let updateUser = async (e, id) => {
+        let response = await fetch(`http://127.0.0.1:8000/api/user/${id}`, {
+            method:'PUT',
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens.access)
             },
-            body:JSON.stringify({'username': e.target.username.value ,'email': e.target.email.value, 'password': e.target.password.value})
+            body:JSON.stringify({'email':user.email,'password':user.password, 'username': user.username, 'first_name': e.target.first_name.value ,'last_name': e.target.last_name.value, 'sex': e.target.sex.value,'age': e.target.age.value, 'heigth': e.target.heigth.value, 'weigth': e.target.weigth.value})
     })
+console.log(response)
+console.log("yes")}
 
-   
-    if(response.status == 201){
-        history('/')
-    }else{
-        alert('Error on api login request')
-    }
-    }  
-
-
+    
     let contextData = {
         user: user,
         authTokens: authTokens,
-        userInfo: updateINFO,
+        userInfo: userInfo,
         loginUser:loginUser,
         logoutUser:logoutUser,
         createUser:createUser,
-        updateINFO:updateINFO
+        updateUser:updateUser,
+        getUinfo:getUinfo
     }
 
     useEffect(()=>{
