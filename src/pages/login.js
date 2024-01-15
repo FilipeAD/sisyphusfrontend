@@ -8,7 +8,7 @@ import sisyphusIcon from '../resources/sisyphus.png';
 
 const Login = () => {
 
-  let {loginUser} = useContext(AuthContext)
+  let {loginUser,} = useContext(AuthContext)
 
   return (
     <div className="basic-container">
@@ -25,7 +25,6 @@ const Login = () => {
 
           <button type="submit" tabIndex={0}>SIGN IN</button>
           <p> Don't have an account? <Link to='/register'>Register</Link></p>
-        
         </form>
         
       </div>
