@@ -11,6 +11,7 @@ export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
+    let [userInfo, setUserInfo] = useState([]);
 
     const history = useNavigate()
 
@@ -49,7 +50,8 @@ export const AuthProvider = ({children}) => {
         let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
             method:'POST',
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+
             },
             body:JSON.stringify({'refresh': authTokens.refresh})
     })
@@ -63,6 +65,24 @@ export const AuthProvider = ({children}) => {
         logoutUser()
     }
     } 
+
+    let updateINFO = async (id) => {
+        let response = await fetch(`http://127.0.0.1:8000/api/user/${id}`, {
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens.access)
+            }
+        })
+    
+    
+        let data = await response.json()
+        if(response.status == 200){
+            setUserInfo(data);
+        }else{
+            console.error(`Failed to update user information. Status: ${response.status}`);
+        }
+    }
 
     let createUser = async (e) => {
         e.preventDefault()
@@ -85,9 +105,12 @@ export const AuthProvider = ({children}) => {
 
     let contextData = {
         user: user,
+        authTokens: authTokens,
+        userInfo: updateINFO,
         loginUser:loginUser,
         logoutUser:logoutUser,
-        createUser:createUser
+        createUser:createUser,
+        updateINFO:updateINFO
     }
 
     useEffect(()=>{

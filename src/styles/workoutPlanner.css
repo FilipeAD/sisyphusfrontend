@@ -1,8 +1,13 @@
 .workout-planner-container {
+  height: 100vh;
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 40%;
+  flex-wrap: wrap;
+  color: rgb(7, 7, 7);
 }
 
 .workout-planner-container label {

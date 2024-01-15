@@ -31,7 +31,6 @@ const WorkoutPlanner = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Your submission logic here
     console.log('Submitted:', { muscleGroup, difficulty, equipment });
   };
 
