@@ -22,7 +22,7 @@ const Diet = () => {
       options: 'input',
     },
     {
-      question: '🏋️ What is your activity level?',
+      question: '🏋️‍♂️ What is your activity level?',
       options: [
         '🛋️ Sedentary (little or no exercise)',
         '🚶 Lightly active (light exercise/sports 1-3 days/week)',
@@ -36,18 +36,26 @@ const Diet = () => {
     },
   ];
 
+
   const handleSelectOption = (option) => {
-    // Check if it's an input question and the input meets the minimum length requirement
-    if (
-      questions[currentQuestion].options === 'input' &&
-      inputValue.trim() === ''
-    ) {
-      alert('Please enter a value before submitting.');
-      return;
+    // Check if it's an input question
+    if (questions[currentQuestion].options === 'input') {
+      // Check if the input is a valid number and not empty
+      const numericInputValue = parseFloat(inputValue);
+      if (isNaN(numericInputValue) || inputValue.trim() === '') {
+        alert('Please enter a valid number before submitting.');
+        return;
+      }
+
+      // Update selectedOptions for input question
+      setSelectedOptions({ ...selectedOptions, [currentQuestion]: numericInputValue });
+      setInputValue('');
+    } else {
+      // Update selectedOptions for non-input question
+      setSelectedOptions({ ...selectedOptions, [currentQuestion]: option });
     }
 
-    setSelectedOptions({ ...selectedOptions, [currentQuestion]: inputValue });
-    setInputValue('');
+    // Move to the next question
     setCurrentQuestion(currentQuestion + 1);
   };
 
@@ -58,7 +66,11 @@ const Diet = () => {
           question={questions[currentQuestion].question}
           options={questions[currentQuestion].options}
           inputValue={inputValue}
-          onInputChange={(value) => setInputValue(value)}
+          onInputChange={(value) => {
+            // Allow only numeric input
+            const numericValue = value.replace(/[^0-9]/g, '');
+            setInputValue(numericValue);
+          }}
           onSelectOption={handleSelectOption}
         />
       ) : (
@@ -79,3 +91,4 @@ const Diet = () => {
 };
 
 export default Diet;
+
