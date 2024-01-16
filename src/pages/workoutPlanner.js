@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/workoutPlanner.css';
+import Question from '../components/question'; // Adjust the import path
 
 const WorkoutPlanner = () => {
   const muscleGroupOptions = [
@@ -7,81 +8,100 @@ const WorkoutPlanner = () => {
     'Chest',
     'Lower Chest',
     'Upper Chest',
-    'Quads',
+    'Quadriceps',
     'Calfs',
     'Biceps',
     'Lower Back',
     'Upper Back',
+    'Middle Back',
+    'Forearms',
+    'Neck',
+    'Traps',
+    'Lats',
+    'Glutes',
+    'Abductors',
   ];
 
-  const difficultyOptions = ['Easy', 'Intermediate', 'Hard'];
+  const difficultyOptions = ['Beginner', 'Intermediate', 'Expert'];
 
   const equipmentOptions = [
     'Kettle Bell',
     'Dumbbells',
     'Z-Bar',
-    'Calisthenics',
+    'Body-Only',
     'Barbell',
     'Machines',
+    'Cables',
+    'Bands',
+    'Other',
   ];
 
-  const [muscleGroup, setMuscleGroup] = useState('');
-  const [difficulty, setDifficulty] = useState('');
-  const [equipment, setEquipment] = useState('');
+  const typeOptions = [
+    'Cardio',
+    'Olympic weightlifting',
+    'Plyometrics',
+    'Powerlifting',
+    'Strength',
+    'Strongman',
+  ]
+
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const questions = [
+    {
+      question: '🏋️‍♂️ Select Muscle Group:',
+      options: muscleGroupOptions,
+    },
+    {
+      question: '🏋️‍♂️ Select the Workout Type:',
+      options: typeOptions,
+    },
+    {
+      question: '💪 Select Difficulty:',
+      options: difficultyOptions,
+    },
+    {
+      question: '🏋️‍♀️ Select Equipment:',
+      options: equipmentOptions,
+    },
+  ];
+
+  const handleSelectOption = (option) => {
+    setSelectedOptions({ ...selectedOptions, [currentQuestion]: option });
+    setCurrentQuestion(currentQuestion + 1);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitted:', { muscleGroup, difficulty, equipment });
+    console.log('Submitted:', selectedOptions);
   };
 
   return (
     <div className="workout-planner-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Workout Planner</h2>
-        <label>
-          <select value={muscleGroup} onChange={(e) => setMuscleGroup(e.target.value)}>
-            <option value="" disabled>
-              Select Muscle Group
-            </option>
-            {muscleGroupOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
+      {currentQuestion < questions.length ? (
+        <Question
+          question={questions[currentQuestion].question}
+          options={questions[currentQuestion].options}
+          onSelectOption={handleSelectOption}
+        />
+      ) : (
+        <div>
+          <h2>Workout Planner</h2>
+          <ul>
+            {Object.entries(selectedOptions).map(([question, answer]) => (
+              <li key={question}>
+                <strong>{questions[question].question}</strong>: {answer}
+              </li>
             ))}
-          </select>
-        </label>
-
-        <label>
-          <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-            <option value="" disabled>
-              Select Difficulty
-            </option>
-            {difficultyOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          <select value={equipment} onChange={(e) => setEquipment(e.target.value)}>
-            <option value="" disabled>
-              Select Equipment
-            </option>
-            {equipmentOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <button type="submit">Submit</button>
-      </form>
+          </ul>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
 export default WorkoutPlanner;
-
