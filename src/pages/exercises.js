@@ -17,7 +17,6 @@ const Exercises = () => {
     
         
         let data = await response.json()
-        console.log('working')
         if(response.status == 200){
             setExercises(data);
         }else{

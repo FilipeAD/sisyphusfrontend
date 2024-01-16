@@ -58,9 +58,7 @@ const Diet = () => {
   }
 
   const handleSelectOption = (option) => {
-    // Check if it's an input question
     if (questions[currentQuestion].options === 'input') {
-      // Check if the input is a valid number and not empty
       const numericInputValue = parseFloat(inputValue);
       if (isNaN(numericInputValue) || inputValue.trim() === '') {
         alert('Please enter a valid number before submitting.');

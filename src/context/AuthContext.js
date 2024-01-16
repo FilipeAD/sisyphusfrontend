@@ -97,28 +97,14 @@ export const AuthProvider = ({children}) => {
     
         
         let data = await response.json()
-        console.log(data)
-        console.log('working')
         if(response.status == 200){
-            
             setUserInfo(data);
-        }else{
-            console.error(`Failed to update user information. Status: ${response.status}`);
+        }else if (response.statusText == 'Unauthorized'){
+            logoutUser()
         }
     }
 
-    let updateUser = async (e, id) => {
-        let response = await fetch(`http://127.0.0.1:8000/api/user/${id}/`, {
-            method:'PUT',
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + String(authTokens.access)
-            },
-            body:JSON.stringify({'email':user.email,'password':user.password, 'username': user.username, 'first_name': e.target.first_name.value ,'last_name': e.target.last_name.value, 'sex': e.target.sex.value,'age': e.target.age.value, 'heigth': e.target.heigth.value, 'weigth': e.target.weigth.value})
-    })
-console.log(response)
-console.log("yes")}
-
+   
     
     let contextData = {
         user: user,
@@ -127,7 +113,6 @@ console.log("yes")}
         loginUser:loginUser,
         logoutUser:logoutUser,
         createUser:createUser,
-        updateUser:updateUser,
         getUinfo:getUinfo
     }
 
