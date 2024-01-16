@@ -22,7 +22,7 @@ const Exercises = () => {
         if(response.status == 200){
             setExercises(data);
         }else{
-            console.error(`Failed to update user information. Status: ${response.status}`);
+            console.error(`Failed to get Exercies information. Status: ${response.status}`);
         }
     }
 
