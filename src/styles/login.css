@@ -63,7 +63,7 @@ textarea:focus, input:focus{
   border: none;
   cursor: pointer;
 
-  background-color:rgb(237, 132, 45);
+  background-color: rgb(237, 132, 45);
   color: rgb(7, 7, 7);
 
   text-align: center;

@@ -8,34 +8,54 @@ const Diet = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [inputValue, setInputValue] = useState('');
+  let [calories, setCalorie] = useState();
+
   const questions = [
     {
-      question: '🚻 What is your gender?',
-      options: ['👨 Male', '👩 Female'],
+      question: 'GENDER',
+      options: [' Male', ' Female'],
     },
     {
-      question: '📏 What is your height? (cm)',
+      question: 'HEIGTH',
       options: 'input',
     },
     {
-      question: '🎂 What is your age?',
+      question: 'AGE',
       options: 'input',
     },
     {
-      question: '🏋️‍♂️ What is your activity level?',
+      question: 'ACTIVITY LEVEL',
       options: [
-        '🛋️ Sedentary (little or no exercise)',
-        '🚶 Lightly active (light exercise/sports 1-3 days/week)',
-        '🏋️ Moderately active (moderate exercise/sports 3-5 days/week)',
-        '🏃 Very active (hard exercise/sports 6-7 days a week)',
+        ' Sedentary',
+        ' Lightly active',
+        ' Moderately active',
+        ' Very active',
       ],
     },
     {
-      question: '⚖️ What is your weight range? (kg)',
+      question: 'WEIGTH',
       options: 'input',
     },
   ];
+  
+  let getCalories = async (weigth, heigth, age, sex, activity) => {
 
+      let response = await fetch(`http://127.0.0.1:8000/api/calories/${weigth}&${heigth}&${sex}&${activity}&${age}`,{
+          method:'GET',
+          headers:{
+              'Content-Type': 'application/json',
+          }
+      })
+  
+
+      let data = await response.json()
+      console.log('working')
+      if(response.status == 200){
+          setCalorie(data);
+      }else{
+          console.error(`Failed to get calories information. Status: ${response.status}`);
+      }
+  }
 
   const handleSelectOption = (option) => {
     // Check if it's an input question
@@ -55,9 +75,13 @@ const Diet = () => {
       setSelectedOptions({ ...selectedOptions, [currentQuestion]: option });
     }
 
-    // Move to the next question
     setCurrentQuestion(currentQuestion + 1);
+    
   };
+
+
+  
+
 
   return (
     <div className='diet-container'>
@@ -67,7 +91,6 @@ const Diet = () => {
           options={questions[currentQuestion].options}
           inputValue={inputValue}
           onInputChange={(value) => {
-            // Allow only numeric input
             const numericValue = value.replace(/[^0-9]/g, '');
             setInputValue(numericValue);
           }}
@@ -83,7 +106,7 @@ const Diet = () => {
               </li>
             ))}
           </ul>
-          <button>Calculate your Calories</button>
+          <button onClick={() => getCalories(selectedOptions.questions[0].question)}>Calculate your Calories</button>
         </div>
       )}
     </div>

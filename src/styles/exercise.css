@@ -1,0 +1,19 @@
+.list-container {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+}
+.list-container li {
+    border-style: solid;
+    border-color:rgb(237, 132, 45);
+    padding: 10px;
+    border-radius: 5px;
+    color:rgb(237, 132, 45);;
+}
+
+.list-container .group-container {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+  

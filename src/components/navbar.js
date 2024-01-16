@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className='align-right'>
 
         <div className="dropdown">
-          <button className="dropbtn">Exercises</button>
+          <Link to="/Exercises"><button className="dropbtn">Exercises</button></Link>
           <div className="dropdown-content">
             <NavLink to="/workoutPlanner" className="nav-link">
               Generic Plan
