@@ -1,9 +1,13 @@
 .filter-container {
   display: flex;
-  gap: 10px; /* Adjust the gap as needed */
+  justify-content: space-between;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
+.filter-container input {
+  margin-right: 10px;
+}
+
+/* Move the Name input to the right */
+label:nth-child(3) {
+  margin-left: auto;
 }

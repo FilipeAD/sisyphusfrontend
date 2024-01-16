@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/filter.css';
 
 const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
   const typeOptions = ['Strength', 'Cardio', 'Flexibility', 'Balance'];
@@ -29,55 +30,59 @@ const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
 
   return (
     <div className='filter-container'>
-      <label>
-        Type:
-        <select name="type" value={filters.type} onChange={handleFilterChange}>
-          <option value="" disabled>Select Type</option>
-          {typeOptions.map((option) => (
-            <option key={option} value={option.toLowerCase()}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
+      <div className='select-boxes'>
+        <label>
+          Type:
+          <select name="type" value={filters.type} onChange={handleFilterChange}>
+            <option value="" disabled>Select Type</option>
+            {typeOptions.map((option) => (
+              <option key={option} value={option.toLowerCase()}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
 
-      <label>
-        Muscle:
-        <select name="muscle" value={filters.muscle} onChange={handleFilterChange}>
-          <option value="" disabled>Select Muscle</option>
-          {muscleOptions.map((option) => (
-            <option key={option} value={option.toLowerCase()}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
+        <label>
+          Muscle:
+          <select name="muscle" value={filters.muscle} onChange={handleFilterChange}>
+            <option value="" disabled>Select Muscle</option>
+            {muscleOptions.map((option) => (
+              <option key={option} value={option.toLowerCase()}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
 
-      <label>
-        Name:
-        <input type="text" name="name" value={filters.name} onChange={handleFilterChange} />
-      </label>
+        <label>
+          Difficulty:
+          <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
+            <option value="" disabled>Select Difficulty</option>
+            {difficultyOptions.map((option) => (
+              <option key={option} value={option.toLowerCase()}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
 
-      <label>
-        Difficulty:
-        <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
-          <option value="" disabled>Select Difficulty</option>
-          {difficultyOptions.map((option) => (
-            <option key={option} value={option.toLowerCase()}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
+        <label>
+          Sort Order:
+          <select onChange={handleSortChange}>
+            <option value="" disabled>Select Sort Order</option>
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+          </select>
+        </label>
+      </div>
 
-      <label>
-        Sort Order:
-        <select onChange={handleSortChange}>
-          <option value="" disabled>Select Sort Order</option>
-          <option value="Ascending">Ascending</option>
-          <option value="Descending">Descending</option>
-        </select>
-      </label>
+      <div className='name-input'>
+        <label>
+          Name:
+          <input type="text" name="name" value={filters.name} onChange={handleFilterChange} />
+        </label>
+      </div>
     </div>
   );
 };
