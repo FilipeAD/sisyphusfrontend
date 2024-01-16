@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/exercise.css'; 
-import topicsBox from '../components/topicsBox';
 
 const Exercises = () => {
 
@@ -32,7 +31,6 @@ const Exercises = () => {
 
   return (
     <div>
-        <topicsBox/>
         
         {exercises.map(exercise => (
             <div key={exercise.id} className='list-container'>

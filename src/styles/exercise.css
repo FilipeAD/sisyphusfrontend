@@ -4,10 +4,11 @@
     padding: 10px;
 }
 .list-container li {
-    background-color:rgb(237, 132, 45);
+    border-style: solid;
+    border-color:rgb(237, 132, 45);
     padding: 10px;
     border-radius: 5px;
-    color:black;
+    color:rgb(237, 132, 45);;
 }
 
 .list-container .group-container {
