@@ -5,8 +5,6 @@ import AuthContext from '../context/AuthContext';
 
 const Diet = () => {
   let { cmCalories, setCalorie} = useContext(AuthContext);
-
- 
   const history = useNavigate();
   
   const handleButtonClick = () => {
@@ -33,7 +31,6 @@ const Diet = () => {
     console.log('working')
     if(response.status == 200){
         setCalorie(data);
-        console.log(cmCalories)
     }else{
         console.error(`Failed to get calories information. Status: ${response.status}`);
     }

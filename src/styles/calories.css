@@ -5,3 +5,20 @@
     margin-bottom: 5px; 
     padding: 10px;
 }
+
+.option-container .calorie-container{
+    background-color: black;
+    border-style: solid;
+    border-color:rgb(237, 132, 45);
+    color:rgb(237, 132, 45);
+    font-weight: bold;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+   
+    padding: 45px;
+    border-radius: 5px;
+
+}
