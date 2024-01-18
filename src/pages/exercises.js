@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import WorkoutFilters from '../components/filter'
 import '../styles/exercise.css'; 
 
 const Exercises = () => {
@@ -30,6 +31,7 @@ const Exercises = () => {
 
   return (
     <div>
+        <WorkoutFilters/>
         
         {exercises.map(exercise => (
             <div key={exercise.id} className='list-container'>

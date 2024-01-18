@@ -12,6 +12,7 @@ export const AuthProvider = ({children}) => {
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
     let [userInfo, setUserInfo] = useState([]);
+    const [cmCalories, setCalorie] = useState(0);
 
     const history = useNavigate()
 
@@ -44,7 +45,6 @@ export const AuthProvider = ({children}) => {
         setUser(null)
         localStorage.removeItem('authTokens')
         history('/login')
-
     }
 
     let createUser = async (e) => {
@@ -82,7 +82,9 @@ export const AuthProvider = ({children}) => {
         setUser(jwtDecode(data.access))
         localStorage.setItem('authTokens', JSON.stringify(data))
     }else{
-        logoutUser()
+        setAuthTokens(null)
+        setUser(null)
+        localStorage.removeItem('authTokens')
     }
     } 
 
@@ -110,10 +112,12 @@ export const AuthProvider = ({children}) => {
         user: user,
         authTokens: authTokens,
         userInfo: userInfo,
+        cmCalories:cmCalories,
         loginUser:loginUser,
         logoutUser:logoutUser,
         createUser:createUser,
-        getUinfo:getUinfo
+        getUinfo:getUinfo,
+        setCalorie:setCalorie
     }
 
     useEffect(()=>{
