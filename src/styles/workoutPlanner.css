@@ -2,12 +2,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center; 
-  flex-direction: column; /* Adjusted for a vertical layout */
+  flex-direction: column; 
 }
 
 .question-container {
   display: flex;
-  width: 70%;
+  width: 80%;
 }
 
 .question-box {
@@ -38,6 +38,7 @@
   padding: 5px;
   margin-bottom: 10px;
   background-color: rgb(237,152,52);
+  max-width: 50%;
 }
 
 .select-box:hover {

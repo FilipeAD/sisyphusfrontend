@@ -19,7 +19,7 @@ const Diet = () => {
 
   let getCalories = async (e) => {
     e.preventDefault();
-    let response = await fetch(`http://127.0.0.1:8000/api/calories/${document.getElementById('weigth').value}&${document.getElementById('heigth').value}&${document.getElementById('sex').value}&${document.getElementById('activity').value}&${document.getElementById('age').value}`,{
+    let response = await fetch(`http://127.0.0.1:8000/api/calculate-calories/${document.getElementById('heigth').value}/${document.getElementById('weigth').value}/${document.getElementById('age').value}/${document.getElementById('sex').value}/${document.getElementById('activity').value}/`,{
         method:'GET',
         headers:{
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Diet = () => {
   
                 <span>HEIGTH AND WEIGTH</span>
                 <div className='small-container'>
-                  <input type="number" id="heigth" name="heigth"  min="150" max="300" equired tabIndex={0}/>
+                  <input type="number" id="heigth" name="heigth"  min="130" max="240" equired tabIndex={0}/>
                   
                   <input type="number" id="weigth" name="weigth"  min="30" max="200" required tabIndex={0}/>
                 </div>

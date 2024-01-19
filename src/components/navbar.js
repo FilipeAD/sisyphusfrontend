@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="dropdown">
           <Link to="/Exercises"><button className="dropbtn">Exercises</button></Link>
           <div className="dropdown-content">
-            <NavLink to="/workoutPlanner" className="nav-link">
+            <NavLink to="/workoutMaker" className="nav-link">
               Generic Plan
             </NavLink>
             <NavLink to="/workoutPlanner" className="nav-link">

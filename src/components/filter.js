@@ -77,12 +77,6 @@ const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
         </label>
       </div>
 
-      <div className='name-input'>
-        <label>
-          Name:
-          <input type="text" name="name" value={filters.name} onChange={handleFilterChange} />
-        </label>
-      </div>
     </div>
   );
 };
