@@ -1,117 +1,94 @@
-
-// Diet.js
-import React, { useState } from 'react';
-import '../styles/diet.css'; // Import the CSS file
-import Question from '../components/question'; // Adjust the import path
+import React, { useContext, useState } from 'react';
+import '../styles/basicForms.css';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 
 const Diet = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const [inputValue, setInputValue] = useState('');
-  let [calories, setCalorie] = useState();
-
-  const questions = [
-    {
-      question: 'GENDER',
-      options: [' Male', ' Female'],
-    },
-    {
-      question: 'HEIGTH',
-      options: 'input',
-    },
-    {
-      question: 'AGE',
-      options: 'input',
-    },
-    {
-      question: 'ACTIVITY LEVEL',
-      options: [
-        ' Sedentary',
-        ' Lightly active',
-        ' Moderately active',
-        ' Very active',
-      ],
-    },
-    {
-      question: 'WEIGTH',
-      options: 'input',
-    },
-  ];
+  let { cmCalories, setCalorie} = useContext(AuthContext);
+  const history = useNavigate();
   
-  let getCalories = async (weigth, heigth, age, sex, activity) => {
-
-      let response = await fetch(`http://127.0.0.1:8000/api/calories/${weigth}&${heigth}&${sex}&${activity}&${age}`,{
-          method:'GET',
-          headers:{
-              'Content-Type': 'application/json',
-          }
-      })
-  
-
-      let data = await response.json()
-      console.log('working')
-      if(response.status == 200){
-          setCalorie(data);
-      }else{
-          console.error(`Failed to get calories information. Status: ${response.status}`);
+  const handleButtonClick = () => {
+      if (cmCalories > 0) {
+        history('/calories');
+      } else {
+        console.log("calories not calculated");
       }
   }
 
-  const handleSelectOption = (option) => {
-    // Check if it's an input question
-    if (questions[currentQuestion].options === 'input') {
-      // Check if the input is a valid number and not empty
-      const numericInputValue = parseFloat(inputValue);
-      if (isNaN(numericInputValue) || inputValue.trim() === '') {
-        alert('Please enter a valid number before submitting.');
-        return;
-      }
 
-      // Update selectedOptions for input question
-      setSelectedOptions({ ...selectedOptions, [currentQuestion]: numericInputValue });
-      setInputValue('');
-    } else {
-      // Update selectedOptions for non-input question
-      setSelectedOptions({ ...selectedOptions, [currentQuestion]: option });
+
+  let getCalories = async (e) => {
+    e.preventDefault();
+    let response = await fetch(`http://127.0.0.1:8000/api/calories/${document.getElementById('weigth').value}&${document.getElementById('heigth').value}&${document.getElementById('sex').value}&${document.getElementById('activity').value}&${document.getElementById('age').value}`,{
+        method:'GET',
+        headers:{
+            'Content-Type': 'application/json',
+        }
+    })
+
+
+    let data = await response.json()
+    console.log('working')
+    if(response.status == 200){
+        setCalorie(data);
+    }else{
+        console.error(`Failed to get calories information. Status: ${response.status}`);
     }
-
-    setCurrentQuestion(currentQuestion + 1);
-    
-  };
+}
 
 
   
 
 
   return (
-    <div className='diet-container'>
-      {currentQuestion < questions.length ? (
-        <Question
-          question={questions[currentQuestion].question}
-          options={questions[currentQuestion].options}
-          inputValue={inputValue}
-          onInputChange={(value) => {
-            const numericValue = value.replace(/[^0-9]/g, '');
-            setInputValue(numericValue);
-          }}
-          onSelectOption={handleSelectOption}
-        />
-      ) : (
-        <div className='answer-container'>
-          <h2>Thank you for answering the questions!</h2>
-          <ul>
-            {Object.entries(selectedOptions).map(([question, answer]) => (
-              <li key={question}>
-                <strong>{questions[question].question}</strong>: {answer}
-              </li>
-            ))}
-          </ul>
-          <button onClick={() => getCalories(selectedOptions.questions[0].question)}>Calculate your Calories</button>
-        </div>
-      )}
+    <div className='basic-container'>
+      <div className="profile-container">
+        <h1>Daily Calorie Calculator</h1>
+        <p>Feel free to enter your information below in the Daily Calorie Intake calculator to receive your personal current daily calorie intake, and what your body needs to fuel itself during the day with your routine!</p>
+        
+            <form className='menu-Edit' onSubmit={getCalories}>
+  
+                <span>HEIGTH AND WEIGTH</span>
+                <div className='small-container'>
+                  <input type="number" id="heigth" name="heigth"  min="150" max="300" equired tabIndex={0}/>
+                  
+                  <input type="number" id="weigth" name="weigth"  min="30" max="200" required tabIndex={0}/>
+                </div>
+
+                <span>SEX AND AGE</span>
+                <div className='small-container'>
+                  
+                  <select id="sex" name="sex"required >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+
+                  <input type="number" id="age" name="age"  min="16" max="80" required tabIndex={0}></input>
+                </div>
+
+                <div className='single-row'>
+                  <span>ACTIVITY LEVEL</span>
+                  <select id="activity" name="activity" required >
+                    <option value={'Sedentary'}> Sedentary </option>
+                    <option value={'Lightly_active'}>Lightly active</option>
+                    <option value={'Moderately_active'}>Moderately active</option>
+                    <option value={'Very_active'}>Very active</option>
+                  </select>
+                </div>
+            
+
+                <div className='small-container'>
+                  <button type="submit" onClick={handleButtonClick} >
+                    Calculate your caloric intake
+                  </button>
+                </div>
+      
+        </form>
+      
+      </div>
     </div>
+  
   );
 };
 
 export default Diet;
-

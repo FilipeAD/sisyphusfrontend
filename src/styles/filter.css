@@ -10,6 +10,7 @@
   margin-right: 10px;
 }
 
+<<<<<<< HEAD
 .filter-container input {
   padding: 8px;
   background-color: rgb(237, 132, 45);
@@ -40,6 +41,9 @@
 }
 
 /* Move the Name input to the right */
+=======
+
+>>>>>>> refs/remotes/origin/main
 label:nth-child(3) {
   margin-left: auto;
 }

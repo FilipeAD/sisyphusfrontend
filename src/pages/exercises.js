@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import '../styles/exercise.css';
 import Filter from '../components/filter'
+=======
+import WorkoutFilters from '../components/filter'
+import '../styles/exercise.css'; 
+>>>>>>> refs/remotes/origin/main
 
 const Exercises = () => {
 
@@ -18,7 +23,6 @@ const Exercises = () => {
     
         
         let data = await response.json()
-        console.log('working')
         if(response.status == 200){
             setExercises(data);
         }else{
@@ -32,7 +36,12 @@ const Exercises = () => {
 
   return (
     <div>
+<<<<<<< HEAD
         <Filter />
+=======
+        <WorkoutFilters/>
+        
+>>>>>>> refs/remotes/origin/main
         {exercises.map(exercise => (
             <div key={exercise.id} className='list-container'>
                 <li>
