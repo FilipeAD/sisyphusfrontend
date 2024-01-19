@@ -11,6 +11,7 @@ const Home = () => {
           <h3>We are the Sisyphus team and we are here to help you get through your fitness journey in an organized, effective, and smart way.</h3>
         </div>
       </div>
+      <Filter />
     </>
   );
 };

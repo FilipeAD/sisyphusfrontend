@@ -1,10 +1,42 @@
 .filter-container {
+  flex: 1;
   display: flex;
   justify-content: space-between;
-}
+  padding: 20px;
+  flex-wrap: wrap;
+  color: rgb(7, 7, 7);}
 
 .filter-container input {
   margin-right: 10px;
+}
+
+.filter-container input {
+  padding: 8px;
+  background-color: rgb(237, 132, 45);
+
+  color: rgba(7, 7, 7, 0.857);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+
+.filter-container select {
+  background-color: rgb(237, 132, 45);
+
+  color: rgba(7, 7, 7, 0.857);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+}
+
+.filter-container input:hover{
+   color:whitesmoke;
+   background-color: #924a1482;
+}
+
+.filter-container select:hover {
+  color:whitesmoke;
+  background-color: #924a1482;
 }
 
 /* Move the Name input to the right */
