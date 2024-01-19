@@ -103,7 +103,7 @@ const Profile = () => {
                     )
                     }
 
-                    {userInfo.calorieIntake ? 
+                    {userInfo ? 
                     (
                     <Link to='/mytrainingplan'><span>Go to your Training Plan</span></Link>
                     ) 

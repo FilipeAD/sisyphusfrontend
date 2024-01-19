@@ -11,7 +11,8 @@ function Planpage() {
   
     return (
       <div>
-        <button className='buttonConnect'>connect to acount</button>   
+        <button className='buttonConnect' >connect to acount</button>   
+
         {[...Array(validDays)].map((_, dayIndex) => (
         
           <div key={dayIndex}>
