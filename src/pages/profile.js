@@ -13,12 +13,12 @@ const Profile = () => {
     e.preventDefault();
 
     let body = {
-    'first_name': document.getElementById('first_name').value ,
-    'last_name': document.getElementById('last_name').value, 
-    'sex': document.getElementById('sex').value,
-    'age': document.getElementById('age').value, 
-    'heigth': document.getElementById('heigth').value, 
-    'weigth': document.getElementById('weigth').value
+      'first_name': document.getElementById('first_name').value ,
+      'last_name': document.getElementById('last_name').value, 
+      'sex': document.getElementById('sex').value,
+      'age': document.getElementById('age').value, 
+      'heigth': document.getElementById('heigth').value, 
+      'weigth': document.getElementById('weigth').value
     }
 
     let response = await fetch('http://127.0.0.1:8000/api/user/' + user.id + '/', {
@@ -32,6 +32,7 @@ const Profile = () => {
     if(response.status === 200){
       console.log('updated')
       console.log(response)
+      console.log(body)
     }else{
       console.log(response)
       console.log(body)

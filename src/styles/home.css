@@ -4,13 +4,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20vh; /* Set the container to full height of the viewport */
-  text-align: center; /* Center the content within the container */
+  height: 80vh;
+  text-align: center;
 }
 
 .intro-text {
-  margin-bottom: 20px;
+  background-color: rgb(237, 132, 45);
+  margin: 20px;
+  padding: 15px;
+  color:black;
 }
 
-/* Add any other styles as needed for the rest of your page */
 
+
+.container img{
+  margin-top: 10px;
+  max-width: 30vh;
+}

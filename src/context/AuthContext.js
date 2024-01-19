@@ -14,6 +14,25 @@ export const AuthProvider = ({children}) => {
     let [userInfo, setUserInfo] = useState([]);
     const [cmCalories, setCalorie] = useState(0);
     const [TrainingplanExercises, setTrainingplanExercises] = useState({});
+    let [exercises, setExercises] = useState([]);
+
+    
+    let getExerciseinfo = async () => {
+        let response = await fetch('http://127.0.0.1:8000/api/exercises/', {
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
+            }
+        })
+    
+        
+        let data = await response.json()
+        if(response.status == 200){
+            setExercises(data);
+        }else{
+            console.error(`Failed to get Exercies information. Status: ${response.status}`);
+        }
+    }
 
     const history = useNavigate()
 
@@ -110,6 +129,7 @@ export const AuthProvider = ({children}) => {
    
     
     let contextData = {
+        exercises:exercises,
         user: user,
         authTokens: authTokens,
         userInfo: userInfo,
@@ -120,7 +140,9 @@ export const AuthProvider = ({children}) => {
         createUser:createUser,
         getUinfo:getUinfo,
         setCalorie:setCalorie,
-        setTrainingplanExercises:setTrainingplanExercises
+        setTrainingplanExercises:setTrainingplanExercises,
+        getExerciseinfo:getExerciseinfo,
+        setExercises:setExercises
     }
 
     useEffect(()=>{

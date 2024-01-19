@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../styles/exercise.css';
 import '../styles/filter.css';
 import WorkoutFilters from '../components/filter'
 import '../styles/exercise.css'; 
+import AuthContext from '../context/AuthContext';
 
 const Exercises = () => {
+    let{exercises, getExerciseinfo} = useContext(AuthContext)
 
-
-    let [exercises, setExercises] = useState([]);
-
-    
-    let getExerciseinfo = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/exercises/', {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json',
-            }
-        })
-    
-        
-        let data = await response.json()
-        if(response.status == 200){
-            setExercises(data);
-        }else{
-            console.error(`Failed to get Exercies information. Status: ${response.status}`);
-        }
-    }
 
     useEffect(()=>{
         getExerciseinfo()
@@ -34,6 +16,7 @@ const Exercises = () => {
   return (
     <div>
         <WorkoutFilters />
+        <div>
         {exercises.map(exercise => (
             <div key={exercise.id} className='list-container'>
                 <li>
@@ -48,6 +31,7 @@ const Exercises = () => {
                 </li>
             </div>
         ))}
+        </div>
     </div>
   )
 }
