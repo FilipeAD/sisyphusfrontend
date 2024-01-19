@@ -1,13 +1,13 @@
 .workout-planner-container {
   display: flex;
   justify-content: space-around;
-  align-items: center; 
-  flex-direction: column; 
+  align-items: center;
+  flex-direction: column;
 }
 
 .question-container {
   display: flex;
-  width: 80%;
+  width: 70%;
 }
 
 .question-box {
@@ -19,31 +19,22 @@
   flex-direction: column;
 }
 
-.muscle-group-box {
-  flex-grow: 1;
-  margin-right: 10px;
+.question-box button {
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .checkbox-label {
-  display: flex;
-  justify-content: space-between;
+
   margin-bottom: 10px;
 }
 
 .checkbox-label input {
-  margin-right: 10px;
-}
-
-.select-box {
-  padding: 5px;
-  margin-bottom: 10px;
-  background-color: rgb(237,152,52);
-  max-width: 50%;
-}
-
-.select-box:hover {
-  color: whitesmoke;
-  background-color: #924a1482;
+  display: flex; /* Use flex to align items horizontally */
+  align-items: column;
+  margin-right: 10px; /* Add margin between checkbox and label */
 }
 
 .button {
@@ -66,42 +57,49 @@
 }
 
 .type-box button {
-  color: rgb(7,7,7);
+  border: none;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.type-box button {
+  color: rgb(7, 7, 7);
   background-color: rgb(237, 152, 52);
 }
 
 .type-box button:hover {
-  color:whitesmoke;
+  color: whitesmoke;
   background-color: #924a1482;
 }
 
 .question-box button:hover {
-  color:whitesmoke;
+  color: whitesmoke;
   background-color: #924a1482;
 }
 
 .question-box button {
-  color: rgb(7,7,7);
+  color: rgb(7, 7, 7);
   background-color: rgb(237, 152, 52);
 }
 
 .submit-button {
   font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 
-    background-color: black;
-    border-style: solid;
-    border-color:rgb(237, 132, 45);
-    color:rgb(237, 132, 45);
-    font-weight: bold;
-  
-    text-align: center;
-    margin-top: 10px;
-    width: 40%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px; 
+  background-color: black;
+  border-style: solid;
+  border-color: rgb(237, 132, 45);
+  color: rgb(237, 132, 45);
+  font-weight: bold;
+
+  text-align: center;
+  margin-top: 10px;
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
 }
