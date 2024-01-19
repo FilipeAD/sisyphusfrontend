@@ -86,13 +86,22 @@
 }
 
 .submit-button {
-  padding: 10px;
-  cursor: pointer;
-  background-color: rgb(237, 152, 52);
-  color: rgb(7, 7, 7);
-  border: none;
   font-size: 16px;
-  border-radius: 5px;
-  align-self: center; /* Center the submit button */
-  margin-top: 20px; /* Add space at the top */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+
+    background-color: black;
+    border-style: solid;
+    border-color:rgb(237, 132, 45);
+    color:rgb(237, 132, 45);
+    font-weight: bold;
+  
+    text-align: center;
+    margin-top: 10px;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px; 
 }
