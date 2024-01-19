@@ -11,21 +11,22 @@ function Planpage() {
     const days = Math.ceil(TrainingplanExercises.length / exercisesPerDay);
     const validDays = Math.max(1, days);
 
-    let updateCalories = async (userId, newCalories) => {
-      const url = `http://127.0.0.1:8000/api/update-calories/${userId}/`;
+    let createPlan = async () => {
+      const url = `http://127.0.0.1:8000/api/training-plans/`;
+      const exerciseIds = TrainingplanExercises.map(exercise => exercise.exercise_id);
   
       try {
           const response = await fetch(url, {
-              method: 'PUT',
+              method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ calorieIntake: newCalories }),
+              body: JSON.stringify({ "userfk": user.id, "exercises": exerciseIds }),
           });
   
           if (response.ok) {
               const data = await response.json();
-              console.log('Calories updated:', data);
+              console.log('Training plan created:', data);
           } else {
               console.error('Failed to update calories:', response.status);
           }
@@ -36,7 +37,8 @@ function Planpage() {
 
   const conectThePlan = (e) =>{
       if(user){
-          history('/profilepage')
+        createPlan()
+        history('/profilepage')
       }else{
           alert("You are not logged in.'Create Account' to connect plan.")
           history('/register');

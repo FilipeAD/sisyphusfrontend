@@ -12,25 +12,29 @@ const Profile = () => {
   let updateUser = async (e) => {
     e.preventDefault();
 
-    
+    let body = {
+    'first_name': document.getElementById('first_name').value ,
+    'last_name': document.getElementById('last_name').value, 
+    'sex': document.getElementById('sex').value,
+    'age': document.getElementById('age').value, 
+    'heigth': document.getElementById('heigth').value, 
+    'weigth': document.getElementById('weigth').value
+    }
+
     let response = await fetch('http://127.0.0.1:8000/api/user/' + user.id + '/', {
         method:'PUT',
         headers:{
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(authTokens.access)
+            'Content-Type': 'application/json'
         },
-        body:JSON.stringify({
-          'email':user.email,'password':user.password, 'username': user.username, 
-          'first_name': document.getElementById('first_name').value ,'last_name': document.getElementById('last_name').value, 
-          'sex': document.getElementById('sex').value,'age': document.getElementById('age').value, 
-          'heigth': document.getElementById('heigth').value, 'weigth': document.getElementById('weigth').value
-        })
+        body:JSON.stringify({ body })
     })
 
     if(response.status === 200){
       console.log('updated')
+      console.log(response)
     }else{
       console.log(response)
+      console.log(body)
     }
   }
 
@@ -103,9 +107,9 @@ const Profile = () => {
                     )
                     }
 
-                    {userInfo ? 
+                    {userInfo.calorieIntake ? 
                     (
-                    <Link to='/mytrainingplan'><span>Go to your Training Plan</span></Link>
+                    <span>Reset calorie plan</span>
                     ) 
                     :  
                     (

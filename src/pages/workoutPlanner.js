@@ -12,6 +12,12 @@ const WorkoutPlanner = () => {
 
   const options = [
     [
+      'Triceps', 'Chest', 'Lower Chest', 'Upper Chest', 'Quadriceps', 'Calfs',
+      'Biceps', 'Lower Back', 'Upper Back', 'Middle Back', 'Forearms', 'Neck',
+      'Traps', 'Lats', 'Glutes', 'Abductors'
+    ],
+    ['Beginner', 'Intermediate', 'Expert'],
+    [
       'Kettle Bell', 'Dumbbells', 'Z-Bar', 'Body-Only', 'Barbell', 'Machines',
       'Cables', 'Bands', 'Other'
     ],
@@ -124,7 +130,7 @@ const WorkoutPlanner = () => {
       </div>
 
       <button type="submit" onClick={handleSubmit} className="submit-button">
-        Generate
+        
       </button>
     </div>
   );
