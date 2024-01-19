@@ -27,14 +27,12 @@
 }
 
 .checkbox-label {
-
   margin-bottom: 10px;
 }
 
 .checkbox-label input {
-  display: flex; /* Use flex to align items horizontally */
-  align-items: column;
-  margin-right: 10px; /* Add margin between checkbox and label */
+  display: flex; 
+  margin-right: 10px; 
 }
 
 .button {
