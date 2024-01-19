@@ -53,7 +53,7 @@ const WorkoutPlanner = () => {
       }
     } else if (questionIndex === 2) {
       // For Equipment (select boxes)
-      setSelectedOptions({ ...selectedOptions, [2]: { ...selectedOptions[2], [option.group]: option.value } });
+      setSelectedOptions({ ...selectedOptions, [2]: { ...selectedOptions[2], [option]: '' } });
     } else if (questionIndex === 3) {
       // For Workout Type (buttons)
       setSelectedOptions({ ...selectedOptions, [3]: option });
@@ -81,6 +81,24 @@ const WorkoutPlanner = () => {
   return (
     <div className="workout-planner-container">
       <div className="question-container">
+        <div className="question-box">
+          <h2>Difficulty Level</h2>
+          {options[1].map((option) => (
+            <button key={option} className="button" onClick={() => handleSelectOption(option, 1)}>
+              {option}
+            </button>
+          ))}
+        </div>
+
+        <div className="type-box">
+          <h2>Workout Type</h2>
+          {options[3].map((typeOption) => (
+            <button key={typeOption} className="button" onClick={() => handleSelectOption(typeOption, 3)}>
+              {typeOption}
+            </button>
+          ))}
+        </div>
+
         <div className="question-box muscle-group-box">
           <h2>Muscle Groups</h2>
           {options[0].map((option) => (
@@ -98,7 +116,7 @@ const WorkoutPlanner = () => {
                 <select
                   className="select-box"
                   value={selectedOptions[2][option] || ''}
-                  onChange={(e) => handleSelectOption({ group: option, value: e.target.value }, 2)}
+                  onChange={(e) => handleSelectOption(option, 2)}
                 >
                   <option value="" disabled>Select Equipment</option>
                   {options[2].map((equipmentOption) => (
@@ -107,24 +125,6 @@ const WorkoutPlanner = () => {
                 </select>
               )}
             </div>
-          ))}
-        </div>
-
-        <div className="question-box">
-          <h2>Difficulty Level</h2>
-          {options[1].map((option) => (
-            <button key={option} className="button" onClick={() => handleSelectOption(option, 1)}>
-              {option}
-            </button>
-          ))}
-        </div>
-
-        <div className="type-box">
-          <h2>Workout Type</h2>
-          {options[3].map((typeOption) => (
-            <button key={typeOption} className="button" onClick={() => handleSelectOption(typeOption, 3)}>
-              {typeOption}
-            </button>
           ))}
         </div>
       </div>
