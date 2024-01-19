@@ -1,40 +1,28 @@
 .filter-container {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
 }
 
-
-
-.filter-container input {
-  padding: 8px;
-  background-color: rgb(237, 132, 45);
-
-  color: rgba(7, 7, 7, 0.857);
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
+.filter-container label {
+  margin-right: 10px;
 }
 
 .filter-container select {
   background-color: rgb(237, 132, 45);
-
   color: rgba(7, 7, 7, 0.857);
   font-size: 16px;
   font-weight: bold;
   border: none;
-  max-width: 20% ;
-}
-
-.filter-container input:hover{
-   color:whitesmoke;
-   background-color: #924a1482;
+  width: 16%;
 }
 
 .filter-container select:hover {
-  color:whitesmoke;
+  color: whitesmoke;
   background-color: #924a1482;
 }
 
-label:nth-child(3) {
-  margin-left: auto;
+.filter-container input:hover {
+  color: whitesmoke;
+  background-color: #924a1482;
 }
