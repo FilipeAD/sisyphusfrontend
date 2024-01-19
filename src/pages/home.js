@@ -1,7 +1,6 @@
 // src/pages/home.js
 import React from 'react';
 import '../styles/home.css';
-import Filter from '../components/filter';
 
 const Home = () => {
   return (

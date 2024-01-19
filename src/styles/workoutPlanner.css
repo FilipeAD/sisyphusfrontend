@@ -1,74 +1,97 @@
-
-/* workoutPlanner.css */
-
 .workout-planner-container {
-  max-width: 800px;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: rgb(237, 132, 45);
-  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+  flex-direction: column; /* Adjusted for a vertical layout */
 }
 
-.workout-planner-container form {
+.question-container {
+  display: flex;
+  width: 70%;
+}
+
+.question-box {
+  padding: 20px;
+  border: 1px solid rgb(237, 152, 52);
+  color: rgb(237, 152, 52);
+  margin: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(237, 132, 45);
 }
 
-.workout-planner-container h2 {
-  color: black;
+.muscle-group-box {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
-.workout-planner-container label {
-  display: block;
+.checkbox-label {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
-  color: black;
 }
 
-.workout-planner-container select {
-  padding: 8px;
-  background-color: rgb(237, 132, 45);
-  color: rgba(7, 7, 7);
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  width: 100%;
-  cursor: pointer;
+.checkbox-label input {
+  margin-right: 10px;
 }
 
-.workout-planner-container option {
-  text-align: center;
+.select-box {
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: rgb(237,152,52);
 }
 
-.workout-planner-container button {
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(237, 132, 45);
-  color: rgb(7, 7, 7);
-  text-align: center;
-  margin-top: 10px;
-  width: 100%;
-}
-
-.workout-planner-container button:hover {
+.select-box:hover {
   color: whitesmoke;
   background-color: #924a1482;
 }
 
-.workout-planner-container select:hover {
-  color: whitesmoke;
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.type-box {
+  padding: 20px;
+  border: 1px solid rgb(237, 152, 52);
+  color: rgb(237, 152, 52);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.type-box button {
+  color: rgb(7,7,7);
+  background-color: rgb(237, 152, 52);
+}
+
+.type-box button:hover {
+  color:whitesmoke;
   background-color: #924a1482;
 }
 
-.workout-planner-container li {
+.question-box button:hover {
+  color:whitesmoke;
+  background-color: #924a1482;
+}
+
+.question-box button {
+  color: rgb(7,7,7);
+  background-color: rgb(237, 152, 52);
+}
+
+.submit-button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(237, 152, 52);
   color: rgb(7, 7, 7);
-  list-style-options: none;
-  gap: 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  align-self: center; /* Center the submit button */
+  margin-top: 20px; /* Add space at the top */
 }
