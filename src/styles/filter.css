@@ -3,9 +3,7 @@
   justify-content: space-between;
 }
 
-.filter-container input {
-  margin-right: 10px;
-}
+
 
 .filter-container input {
   padding: 8px;
@@ -24,6 +22,7 @@
   font-size: 16px;
   font-weight: bold;
   border: none;
+  max-width: 20% ;
 }
 
 .filter-container input:hover{

@@ -31,6 +31,10 @@
     border-radius: 5px;
 }
 
+.profile-container  p {
+    text-align: center;
+}
+
 
 
 .profile-container form h2 {

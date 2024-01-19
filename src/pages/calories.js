@@ -1,7 +1,7 @@
 import React, { useContext, useEffect} from 'react'
 import '../styles/calories.css'; 
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Calories = () => {
     const history = useNavigate();
@@ -14,10 +14,6 @@ const Calories = () => {
         if (cmCalories == 0) {
           history('/diet');
         } 
-    }
-    
-    const goToLogin =() =>{
-        history('/login');
     }
 
     let updateCalories = async (userId, newCalories) => {
@@ -43,14 +39,27 @@ const Calories = () => {
         }
     };
 
-    const conectThePlan = () =>{
+    const conectThePlan = (e) =>{
         if(user){
-            updateCalories(user.id, )
+            let newCalories;
+            switch (e.target.id) {
+                case 'surplus':
+                    newCalories = surplus
+                    break;
+                case 'maintain':
+                    newCalories = roundedNumber
+                    break;
+                case 'deficit':
+                    newCalories = deficit
+                    break;
+               
+            }
+            updateCalories(user.id, newCalories)
+            history('/profilepage')
         }else{
-            alert("You dont have a account");
-            
+            alert("You are not logged in.'Create Account' to connect plan.")
+            history('/register');
         }
-
     }
 
     useEffect(()=>{
@@ -66,21 +75,21 @@ const Calories = () => {
                     <h1>Lose weigth</h1>
                     <h3>Calorie intake per day</h3>
                     <p>{deficit-200} - {deficit}</p>
-                    <button onClick={conectThePlan}>connect plan</button>
+                    <button id="deficit" onClick={conectThePlan}>connect plan</button>
                 </div>
 
                 <div className='calorie-container'>
                     <h1>Maintain weight</h1>
                     <h3>Calorie intake per day</h3>
                     <p>{roundedNumber - 100} - {roundedNumber}</p>
-                    <button onClick={conectThePlan}>connect plan</button>
+                    <button id="maintain" onClick={conectThePlan}>connect plan</button>
                 </div>
         
                 <div className='calorie-container'>
                     <h1>Caloric Surplus</h1>
                     <h3>Calorie intake per day</h3>
                     <p>{surplus} - {surplus + 150}</p>
-                    <button onClick={conectThePlan}>connect plan</button>
+                    <button  id="surplus"  onClick={conectThePlan}>connect plan</button>
                 </div>
             
             </div>

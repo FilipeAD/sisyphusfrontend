@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../context/AuthContext';
 import '../styles/basicForms.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-
+  const history = useNavigate();
   let {user, logoutUser, userInfo, getUinfo, authTokens} = useContext(AuthContext);
     
  
@@ -35,10 +36,17 @@ const Profile = () => {
   }
 
 
+  const userVerification = ()=> {
+    if(user){
+      getUinfo(user.id)
+    }
+    else{
+      history('/login')
+    }
+  }
+
   useEffect(()=>{
-
-    getUinfo(user.id)
-
+   userVerification()
   }, [])
 
 
@@ -83,6 +91,8 @@ const Profile = () => {
 
                     <button onClick={logoutUser} >LOGOUT</button>
                   </div>
+
+                 
         
           </form>
         </div>

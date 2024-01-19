@@ -13,6 +13,7 @@ import './styles/App.css';
 import Header from './components/navbar';
 import Exercises from './pages/exercises'
 import Calories from './pages/calories'
+import Workoutmaker from './pages/workoutmaker'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/diet" element={<Diet />} />
               <Route path="/exercises" element={ <Exercises /> }/>
               <Route path="/calories" element={ <Calories /> }/>
+              <Route path="/workoutmaker" element={ <Workoutmaker /> }/>
 
               <Route path="/login" element={ <Login /> }/>
               <Route path="/register" element={<Register />} /> 
