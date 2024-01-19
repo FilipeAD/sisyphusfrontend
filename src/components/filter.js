@@ -1,7 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/filter.css';
+import AuthContext from '../context/AuthContext';
 
-const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
+const WorkoutFilters = () => {
+
+  let {exercises, setExercises} = useContext(AuthContext)
+
+
+  const handleSortChange = (e) => {
+    const exerciseIds = exercises.map(exercise => exercise.exercise_id);
+  
+    const sortedExercises = exercises.slice().sort((a, b) => {
+      if (e.target.value === 'Ascending') {
+        return a.exercise_id - b.exercise_id;
+      } else if (e.target.value === 'Descending') {
+        return b.exercise_id - a.exercise_id;
+      }
+      return 0; 
+    });
+  
+    setExercises(sortedExercises);
+  };
+
+  const handleFilterChange = (e) => {
+    const sortOrder = e.target.value;
+
+  };
+
   const typeOptions = ['Strength', 'Cardio', 'Flexibility', 'Balance'];
   const muscleOptions = [
     'Abdominals', 'Abductors', 'Adductors', 'Biceps', 'Calves', 'Chest', 'Forearms',
@@ -17,21 +42,11 @@ const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
     difficulty: '',
   });
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
-    onFilterChange({ ...filters, [name]: value });
-  };
-
-  const handleSortChange = (e) => {
-    const sortOrder = e.target.value;
-    onSortChange(sortOrder);
-  };
-
   return (
     <div className='filter-container'>
-      <div className='select-boxes'>
-        <label>
+      <div className='filter-select'>
+       {/*
+      <label>
           Type:
           <select name="type" value={filters.type} onChange={handleFilterChange}>
             <option value="" disabled>Select Type</option>
@@ -42,6 +57,7 @@ const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
             ))}
           </select>
         </label>
+        -->
 
         <label>
           Muscle:
@@ -66,6 +82,7 @@ const WorkoutFilters = ({ onFilterChange, onSortChange }) => {
             ))}
           </select>
         </label>
+        */}
 
         <label>
           Sort Order:
