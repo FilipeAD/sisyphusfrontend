@@ -25,7 +25,7 @@ const Calories = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ calories: newCalories }),
+                body: JSON.stringify({ calorieIntake: newCalories }),
             });
     
             if (response.ok) {

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../context/AuthContext';
 import '../styles/basicForms.css'; 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const history = useNavigate();
@@ -12,7 +12,6 @@ const Profile = () => {
   let updateUser = async (e) => {
     e.preventDefault();
 
-    console.log( document.getElementById('weigth').value)
     
     let response = await fetch('http://127.0.0.1:8000/api/user/' + user.id + '/', {
         method:'PUT',
@@ -57,7 +56,7 @@ const Profile = () => {
         <div className="profile-container">
           
           <form className='menu-Edit' onSubmit={updateUser}>
-              <h2>Welcome {userInfo.username}</h2>
+              <h1>Welcome {userInfo.username}</h1>
 
                   <span>FIRST AND LAST NAME</span>
                   <div className='small-container'>
@@ -91,6 +90,32 @@ const Profile = () => {
 
                     <button onClick={logoutUser} >LOGOUT</button>
                   </div>
+
+
+                  <div className='small-container'>
+                    {userInfo.calorieIntake ? 
+                    (
+                    <span>Daily calories: {userInfo.calorieIntake+' kj'}</span>
+                    ) 
+                    :  
+                    (
+                    <span>No diet plan connected</span>
+                    )
+                    }
+
+                    {userInfo.calorieIntake ? 
+                    (
+                    <Link to='/mytrainingplan'><span>Go to your Training Plan</span></Link>
+                    ) 
+                    :  
+                    (
+                    <span>No Training Plan connected</span>
+                    )
+                    }
+
+                  </div>
+
+
 
                  
         

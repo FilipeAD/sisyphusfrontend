@@ -14,6 +14,8 @@ import Header from './components/navbar';
 import Exercises from './pages/exercises'
 import Calories from './pages/calories'
 import Workoutmaker from './pages/workoutmaker'
+import Trainingplan from './pages/trainingplan'
+import Planpage from './pages/planpage'
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
               <Route path="/exercises" element={ <Exercises /> }/>
               <Route path="/calories" element={ <Calories /> }/>
               <Route path="/workoutmaker" element={ <Workoutmaker /> }/>
+              <Route path="/trainingplan" element={ <Trainingplan /> }/>
+              <Route path="/planpage" element={ <Planpage /> }/>
 
               <Route path="/login" element={ <Login /> }/>
               <Route path="/register" element={<Register />} /> 

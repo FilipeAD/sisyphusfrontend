@@ -13,6 +13,7 @@ export const AuthProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let [userInfo, setUserInfo] = useState([]);
     const [cmCalories, setCalorie] = useState(0);
+    const [TrainingplanExercises, setTrainingplanExercises] = useState({});
 
     const history = useNavigate()
 
@@ -113,11 +114,13 @@ export const AuthProvider = ({children}) => {
         authTokens: authTokens,
         userInfo: userInfo,
         cmCalories:cmCalories,
+        TrainingplanExercises:TrainingplanExercises,
         loginUser:loginUser,
         logoutUser:logoutUser,
         createUser:createUser,
         getUinfo:getUinfo,
-        setCalorie:setCalorie
+        setCalorie:setCalorie,
+        setTrainingplanExercises:setTrainingplanExercises
     }
 
     useEffect(()=>{
